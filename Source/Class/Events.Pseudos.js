@@ -10,7 +10,7 @@ license: MIT-style license
 authors:
   - Arian Stolwijk
 
-requires: [Core/Class.Extras, Core/Slick.Parser, More/MooTools.More]
+requires: [Core/Class.Extras, Core/Slick.Parser]
 
 provides: [Events.Pseudos]
 
@@ -18,6 +18,9 @@ provides: [Events.Pseudos]
 */
 
 (function(){
+
+var Events = exports.Events;
+var Slick = exports.Slick;
 
 Events.Pseudos = function(pseudos, addEvent, removeEvent){
 
@@ -149,9 +152,5 @@ Events.lookupPseudo = function(key){
 
 var proto = Events.prototype;
 Events.implement(Events.Pseudos(pseudos, proto.addEvent, proto.removeEvent));
-
-['Request', 'Fx'].each(function(klass){
-	if (this[klass]) this[klass].implement(Events.prototype);
-});
 
 })();
